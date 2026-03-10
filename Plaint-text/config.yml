@@ -1,1 +1,16 @@
+backend:
+  name: git-gateway
+  branch: main
 
+media_folder: "imagens"
+public_folder: "/imagens"
+
+collections:
+  - name: "noticias"
+    label: "Notícias"
+    folder: "posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Conteúdo", name: "body", widget: "markdown" }
