@@ -1,0 +1,133 @@
+body{
+font-family:Arial;
+margin:0;
+background:#f0f5ff;
+}
+
+/* CABEÇALHO */
+
+header{
+background:#004aad;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+header h1{
+margin:0;
+font-size:28px;
+}
+
+/* MENU */
+
+nav{
+background:white;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+border-bottom:3px solid #004aad;
+}
+
+nav a{
+padding:15px;
+text-decoration:none;
+color:#004aad;
+font-weight:bold;
+}
+
+nav a:hover{
+background:#e6edff;
+}
+
+/* PUBLICIDADE */
+
+.publicidade{
+padding:20px;
+text-align:center;
+}
+
+.banner{
+background:#dfe8ff;
+padding:40px;
+}
+
+/* POSTS */
+
+#posts{
+max-width:1000px;
+margin:auto;
+padding:20px;
+}
+
+.post{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* RODAPÉ */
+
+footer{
+background:#004aad;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+.redes a{
+color:white;
+text-decoration:none;
+margin:0 10px;
+font-weight:bold;
+}
+
+.redes a:hover{
+text-decoration:underline;
+}
+
+/* RESPONSIVIDADE */
+
+/* CELULAR */
+
+@media (max-width:600px){
+
+header h1{
+font-size:22px;
+}
+
+nav{
+flex-direction:column;
+align-items:center;
+}
+
+nav a{
+width:100%;
+border-bottom:1px solid #ddd;
+}
+
+.banner{
+padding:20px;
+}
+
+.post{
+padding:15px;
+}
+
+}
+
+/* TABLET */
+
+@media (max-width:900px){
+
+#posts{
+padding:15px;
+}
+
+nav a{
+padding:12px;
+}
+
+}
