@@ -4,12 +4,18 @@ body {
     background: #f0f5ff;
 }
 
-/* CABEÇALHO */
+/* CABEÇALHO E LOGO */
 header {
     background: #004aad;
     color: white;
     text-align: center;
     padding: 20px;
+}
+
+.logo {
+    max-width: 180px; /* Tamanho da logo */
+    height: auto;
+    margin-bottom: 10px;
 }
 
 header h1 {
@@ -46,7 +52,7 @@ nav a:hover {
 .banner {
     background: #dfe8ff;
     padding: 40px;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 /* POSTS */
@@ -80,31 +86,14 @@ footer {
     font-weight: bold;
 }
 
-.redes a:hover {
-    text-decoration: underline;
-}
-
 /* RESPONSIVIDADE */
-
-/* CELULAR */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 22px;
-    }
-    nav {
-        flex-direction: column;
-        align-items: center;
-    }
-    nav a {
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid #ddd;
-    }
+@media (max-width:600px) {
+    header h1 { font-size: 22px; }
+    nav { flex-direction: column; align-items: center; }
+    nav a { width: 100%; border-bottom: 1px solid #ddd; text-align: center; }
+    .logo { max-width: 140px; }
 }
 
-/* TABLET */
-@media (max-width: 900px) {
-    #posts {
-        padding: 15px;
-    }
+@media (max-width:900px) {
+    #posts { padding: 15px; }
 }
