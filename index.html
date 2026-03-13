@@ -12,44 +12,69 @@
         <img src="posts/27317.jpg" alt="Logo Noroeste Paranaense" class="logo-site">
     </header>
 
-    <nav id="menu-principal">
+    <nav>
         <div class="menu-icon" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
+            <span class="txt-menu">MENU</span>
         </div>
         
         <div class="nav-links" id="nav-links">
-            <a href="#">Eventos</a>
             <a href="#">Notícias</a>
-            <a href="#">Utilidade Pública</a>
+            <a href="#">Eventos</a>
             <a href="#">Vagas de Emprego</a>
+            <a href="#">Utilidade Pública</a>
             <a href="#">Serviços</a>
             <a href="#">Humor</a>
             <a href="#">Horóscopo</a>
-            <a href="#">Resumo de Novelas</a>
+            <a href="#">Novelas</a>
         </div>
     </nav>
 
-    <main>
-        <section class="publicidade">
-            <h2>Publicidade</h2>
-            <div class="banner">
-                Seu anúncio aqui
-            </div>
+    <main class="container">
+        <section class="publicidade-topo">
+            <div class="banner-ads">Publicidade - Anuncie Aqui</div>
         </section>
 
-        <section id="posts">
-            </section>
+        <div class="noticias-grid">
+            
+            <article class="noticia-destaque">
+                <img src="https://via.placeholder.com/800x450" alt="Imagem da notícia principal">
+                <div class="destaque-info">
+                    <span class="categoria">Região</span>
+                    <h1>Título da Notícia Principal em Destaque no Noroeste</h1>
+                    <p>Resumo da notícia importante que está acontecendo agora no Noroeste do Paraná para informar o leitor.</p>
+                </div>
+            </article>
+
+            <aside class="noticias-laterais">
+                <article class="mini-card">
+                    <img src="https://via.placeholder.com/150x100" alt="Notícia 1">
+                    <h3>Vagas de emprego abertas para Maringá e região</h3>
+                </article>
+                <article class="mini-card">
+                    <img src="https://via.placeholder.com/150x100" alt="Notícia 2">
+                    <h3>Previsão do tempo: Calor segue forte no Noroeste</h3>
+                </article>
+                <article class="mini-card">
+                    <img src="https://via.placeholder.com/150x100" alt="Notícia 3">
+                    <h3>Programação de eventos para o final de semana</h3>
+                </article>
+            </aside>
+
+        </div>
     </main>
 
     <footer>
-        <div class="redes">
-            <a href="https://wa.me/5544988329395" target="_blank">WhatsApp</a>
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
+        <div class="footer-content">
+            <div class="redes">
+                <a href="https://wa.me/5544988329395" target="_blank">WhatsApp</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+            <p>&copy; 2026 Noroeste Paranaense - Todos os direitos reservados.</p>
         </div>
-        <p>&copy; 2026 Noroeste Paranaense</p>
     </footer>
 
     <script src="script.js"></script>
