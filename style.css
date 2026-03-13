@@ -1,122 +1,109 @@
-/* 1. Configurações Gerais */
+/* Configurações Gerais */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background-color: #f0f2f5;
-    color: #333;
-    line-height: 1.6;
+    background-color: #f4f4f4;
 }
 
-/* 2. Cabeçalho (Onde está a logo) */
+/* Cabeçalho e Logo */
 header {
     background-color: #ffffff;
     padding: 20px 0;
-    text-align: center;
-    border-bottom: 5px solid #004a8d; /* Faixa azul abaixo da logo */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    border-bottom: 4px solid #004a8d;
 }
 
 .logo-site {
-    max-width: 180px; /* Tamanho ideal para o topo */
+    max-width: 80%; /* Garante espaço nas laterais no celular */
+    width: 250px;   /* Tamanho fixo no PC */
     height: auto;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto; /* Reforça a centralização com espaços iguais */
 }
 
-/* 3. Menu de Navegação */
+/* Menu de Navegação */
 nav {
     background-color: #004a8d;
+    color: white;
     display: flex;
-    flex-wrap: wrap; /* Faz os itens quebrarem a linha no celular */
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    padding: 5px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    padding: 12px 18px;
-    font-size: 13px;
+    padding: 15px 20px;
     font-weight: bold;
     text-transform: uppercase;
-    transition: background 0.3s;
+    font-size: 14px;
 }
 
 nav a:hover {
     background-color: #003366;
 }
 
-/* 4. Área de Publicidade */
-.publicidade {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 0 15px;
-    text-align: center;
+/* Ícone Hambúrguer (Escondido no PC) */
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 15px;
+    cursor: pointer;
 }
 
-.publicidade h2 {
-    font-size: 12px;
-    color: #888;
-    text-transform: uppercase;
-    margin-bottom: 5px;
+.menu-icon span {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+/* Publicidade e Conteúdo */
+.publicidade {
+    text-align: center;
+    padding: 20px;
 }
 
 .banner {
-    background-color: #e2e8f0;
-    border: 2px dashed #cbd5e0;
-    padding: 30px;
-    border-radius: 8px;
-    color: #4a5568;
-    font-size: 14px;
+    background-color: #ddd;
+    padding: 40px;
+    border: 2px dashed #999;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* 5. Seção de Posts (Notícias) */
-#posts {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 15px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
+/* Responsividade (Celular) */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: flex; /* Mostra as barrinhas */
+    }
 
-/* 6. Rodapé */
-footer {
-    background-color: #1a202c;
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 40px;
-}
+    .nav-links {
+        display: none; /* Esconde os links */
+        width: 100%;
+        flex-direction: column;
+    }
 
-.redes {
-    margin: 15px 0;
-}
+    .nav-links.active {
+        display: flex; /* Mostra ao clicar */
+    }
 
-.redes a {
-    color: #00a8ff;
-    text-decoration: none;
-    margin: 0 10px;
-    font-weight: bold;
-}
-
-footer p {
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-/* Ajuste para Celulares Pequenos */
-@media (max-width: 600px) {
     nav a {
-        flex: 1 1 45%; /* Coloca dois itens por linha no menu */
+        width: 100%;
         text-align: center;
-        border: 0.5px solid rgba(255,255,255,0.1);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 }
