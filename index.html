@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noroeste Paranaense | Portal de Notícias</title>
+    <title>Noroeste Paranaense | Portal de Notícias e Finanças</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,90 +15,90 @@
         <img src="posts/27317.jpg" alt="Logo Noroeste Paranaense" class="logo">
     </header>
 
+    <div class="ticker-wrapper">
+        <div class="ticker-content" id="ticker-values">
+            </div>
+    </div>
+
     <nav class="main-nav">
         <div class="nav-container-top">
             <div class="menu-container-mobile" onclick="toggleMenu()">
-                <div class="hamburger">
-                    <span></span><span></span><span></span>
-                </div>
+                <div class="hamburger"><span></span><span></span><span></span></div>
                 <span class="menu-label">MENU</span>
             </div>
-            
             <div class="search-box">
                 <input type="text" placeholder="Buscar notícias...">
                 <button><i class="fas fa-search"></i></button>
             </div>
         </div>
-        
         <ul class="nav-links" id="nav-links">
-            <li><a href="#inicio" onclick="toggleMenu()"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#noticias" onclick="toggleMenu()"><i class="fas fa-newspaper"></i> Notícias</a></li>
             <li><a href="#economia" onclick="toggleMenu()"><i class="fas fa-chart-line"></i> Economia</a></li>
-            <li><a href="#novelas" onclick="toggleMenu()"><i class="fas fa-tv"></i> Novelas</a></li>
-            <li><a href="#signos" onclick="toggleMenu()"><i class="fas fa-star"></i> Signos</a></li>
-            <li><a href="#eventos" onclick="toggleMenu()"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
-            <li><a href="#empregos" onclick="toggleMenu()"><i class="fas fa-briefcase"></i> Empregos</a></li>
+            <li><a href="#agro" onclick="toggleMenu()"><i class="fas fa-seedling"></i> Agronegócio</a></li>
+            <li><a href="#clima" onclick="toggleMenu()"><i class="fas fa-cloud-sun"></i> Clima</a></li>
         </ul>
     </nav>
 
     <main class="content-wrapper">
         
-        <section id="economia" class="market-panel">
-            <div class="indicator-group">
-                <div class="market-item">
-                    <span class="label">DÓLAR</span>
-                    <span class="value">R$ 4,96 <i class="fas fa-caret-down down"></i></span>
-                </div>
-                <div class="market-item">
-                    <span class="label">IBOVESPA</span>
-                    <span class="value">128.450 <i class="fas fa-caret-up up"></i></span>
-                </div>
-                <div class="market-item">
-                    <span class="label">BITCOIN</span>
-                    <span class="value">R$ 365.200 <i class="fas fa-caret-up up"></i></span>
-                </div>
-            </div>
-
-            <div class="weather-brief">
-                <i class="fas fa-sun"></i>
-                <span>Maringá: 29°C</span>
+        <section id="noticias" class="info-block">
+            <h3 class="title-section"><i class="fas fa-bolt"></i> Últimas Notícias</h3>
+            <div id="news-container">
+                <p class="loading-text">Carregando notícias em tempo real...</p>
             </div>
         </section>
 
-        <section id="inicio">
-            <article class="hero-post">
-                <div class="img-container">
-                    <img src="posts/27317.jpg" alt="Expoingá 2026">
+        <section id="economia" class="info-block">
+            <h3 class="title-section"><i class="fas fa-university"></i> Mercado Financeiro</h3>
+            <div class="market-container">
+                <div class="market-main">
+                    <div class="market-header">
+                        <span class="m-label">IBOVESPA</span>
+                        <span class="m-value up">128.450 <small>pts</small> <i class="fas fa-arrow-up"></i></span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="ibovChart"></canvas>
+                    </div>
                 </div>
-                <div class="post-content">
-                    <span class="badge">URGENTE</span>
-                    <h2>Expoingá 2026: Venda de ingressos liberada e grade de shows confirmada</h2>
-                    <p>Confira a programação completa para hoje (13/03) e garanta seu lugar no maior evento do Noroeste.</p>
+
+                <div class="converter-card">
+                    <h4><i class="fas fa-exchange-alt"></i> Conversor</h4>
+                    <input type="number" id="inputValue" placeholder="Valor em R$" oninput="convertCurrency()">
+                    <select id="currencySelect" onchange="convertCurrency()">
+                        <option value="4.96">Dólar (USD)</option>
+                        <option value="5.38">Euro (EUR)</option>
+                    </select>
+                    <div id="resultValue" class="result-box">Resultado: $ 0,00</div>
                 </div>
-            </article>
-        </section>
-
-        <section id="novelas" class="info-block">
-            <h3 class="title-section"><i class="fas fa-tv"></i> Resumo das Novelas</h3>
-            <div class="card-text">
-                <p><strong>Mania de Você:</strong> Mavi descobre segredo de Luma e planeja vingança. Viola fica dividida.</p>
-            </div>
-            <div class="card-text">
-                <p><strong>Volta por Cima:</strong> Madalena confronta Osmar sobre o bilhete premiado de seu pai.</p>
             </div>
         </section>
 
-        <section id="signos" class="info-block">
-            <h3 class="title-section"><i class="fas fa-star"></i> Horóscopo de Hoje</h3>
-            <div class="card-text">
-                <p><strong>Áries:</strong> Foco total nas finanças. <strong>Touro:</strong> Dia favorável para o amor e diálogos.</p>
+        <section id="agro" class="info-block">
+            <h3 class="title-section"><i class="fas fa-tractor"></i> Agronegócio Noroeste</h3>
+            <div class="agro-grid">
+                <div class="agro-card">
+                    <span class="agro-name">SOJA (Saca)</span>
+                    <span class="agro-price">R$ 134,50 <i class="fas fa-caret-up up"></i></span>
+                </div>
+                <div class="agro-card">
+                    <span class="agro-name">MILHO (Saca)</span>
+                    <span class="agro-price">R$ 62,20 <i class="fas fa-caret-down down"></i></span>
+                </div>
+                <div class="agro-card">
+                    <span class="agro-name">BOI GORDO (@)</span>
+                    <span class="agro-price">R$ 232,00 <i class="fas fa-caret-up up"></i></span>
+                </div>
+                <div class="agro-card">
+                    <span class="agro-name">TRIGO (Ton)</span>
+                    <span class="agro-price">R$ 1.280 <i class="fas fa-minus stable"></i></span>
+                </div>
             </div>
         </section>
 
-        <section id="eventos" class="info-block">
-            <h3 class="title-section"><i class="fas fa-calendar-alt"></i> Eventos na Região</h3>
-            <div class="card-text">
-                <p><strong>Maringá:</strong> Feira do Produtor no Estádio Willie Davids, das 17h às 21h.</p>
-            </div>
+        <section id="clima" class="info-block">
+            <h3 class="title-section"><i class="fas fa-globe-americas"></i> Previsão do Tempo (Brasil)</h3>
+            <div id="map"></div>
+            <div id="weather-info" class="card-text" style="display:none; margin-top:10px;"></div>
         </section>
 
     </main>
@@ -106,22 +108,74 @@
     </a>
 
     <footer class="main-footer">
-        <div class="footer-container">
-            <h3>Siga Nossas Redes</h3>
-            <div class="social-highlight">
-                <a href="https://wa.me/5544988329395" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
-                <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
-            </div>
-            <p class="copyright">&copy; 2026 Noroeste Paranaense</p>
+        <div class="social-highlight">
+            <a href="#" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
         </div>
+        <p class="copyright">&copy; 2026 Noroeste Paranaense</p>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        function toggleMenu() {
-            document.getElementById('nav-links').classList.toggle('show');
+        function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
+
+        // 1. Notícias Automáticas (RSS do G1/Economia como exemplo)
+        async function fetchNews() {
+            const container = document.getElementById('news-container');
+            const rssUrl = 'https://api.rss2json.com/v1/api.json?rss_url=https://g1.globo.com/rss/g1/economia/';
+            try {
+                const response = await fetch(rssUrl);
+                const data = await response.json();
+                let html = '';
+                data.items.slice(0, 5).forEach(item => {
+                    html += `
+                        <div class="auto-news-card">
+                            <img src="${item.thumbnail || 'posts/27317.jpg'}" class="news-thumb">
+                            <div class="news-info">
+                                <h4>${item.title}</h4>
+                                <a href="${item.link}" target="_blank">Ver mais <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            } catch (e) { container.innerHTML = "<p>Erro ao carregar notícias.</p>"; }
         }
+
+        // 2. Ticker e Gráfico
+        const ticker = document.getElementById('ticker-values');
+        const indices = ["PETR4: +1.2%", "VALE3: -0.5%", "DÓLAR: R$ 4,96", "BITCOIN: R$ 365k", "SOJA: R$ 134,50"];
+        ticker.innerHTML = indices.map(i => `<span>${i}</span>`).join(' • ') + ' • ';
+        ticker.innerHTML += ticker.innerHTML;
+
+        const ctx = document.getElementById('ibovChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Hoje'],
+                datasets: [{ label: 'Ibovespa', data: [126, 125.5, 127.2, 126.8, 127.5, 128, 128.4], borderColor: '#2ecc71', backgroundColor: 'rgba(46, 204, 113, 0.1)', fill: true, tension: 0.4 }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+        });
+
+        // 3. Conversor e Mapa
+        function convertCurrency() {
+            const val = document.getElementById('inputValue').value;
+            const rate = document.getElementById('currencySelect').value;
+            document.getElementById('resultValue').innerHTML = val > 0 ? `Resultado: <strong>${(val/rate).toFixed(2)}</strong>` : "Resultado: $ 0,00";
+        }
+
+        const map = L.map('map').setView([-14.23, -51.92], 4);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        map.on('click', e => {
+            const winfo = document.getElementById('weather-info');
+            winfo.style.display = 'block';
+            winfo.innerHTML = `<i class="fas fa-sun"></i> Local: ${e.latlng.lat.toFixed(2)} | Clima Estimado: 28°C Céu Limpo`;
+        });
+
+        window.onload = fetchNews;
     </script>
 </body>
-</html>
+                </html>
 
