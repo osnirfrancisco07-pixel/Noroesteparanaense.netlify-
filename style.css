@@ -1,409 +1,59 @@
-/* ==========================================================================
-   VARIÁVEIS E RESET
-   ========================================================================== */
-:root {
-    --azul-principal: #004a8d;
-    --azul-escuro: #003366;
-    --verde-agro: #2ecc71;
-    --laranja-eventos: #e67e22;
-    --fundo-cinza: #f0f2f5;
-    --branco: #ffffff;
-    --preto-ticker: #000000;
-    --sombra: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
+:root { --azul: #004a8d; --fundo: #f0f2f5; --branco: #ffffff; --verde: #2ecc71; --vermelho: #e74c3c; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+html { scroll-behavior: smooth; }
+body { background: var(--fundo); }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
+/* Header e Nav */
+.main-header { background: var(--branco); padding: 15px; text-align: center; border-bottom: 2px solid #ddd; }
+.logo { height: 50px; }
+.main-nav { background: rgba(0, 74, 141, 0.96); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 1000; }
+.nav-top { display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; }
 
-body {
-    background-color: var(--fundo-cinza);
-    color: #333;
-    line-height: 1.6;
-    scroll-behavior: smooth; /* Suaviza o clique no menu */
-}
+/* Ticker TV Ajustado */
+.ticker-tv { background: #000; height: 45px; display: flex; align-items: center; overflow: hidden; }
+.ticker-track { display: flex; white-space: nowrap; animation: scroll-tv 35s linear infinite; align-items: center; }
+.ticker-label { background: var(--azul); color: #fff; padding: 3px 10px; margin: 0 15px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+.ticker-value { color: var(--verde); font-size: 18px; font-weight: 800; }
+.up { color: var(--verde); margin-left: 5px; }
+.down { color: var(--vermelho); margin-left: 5px; }
+@keyframes scroll-tv { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* ==========================================================================
-   HEADER E NAVEGAÇÃO
-   ========================================================================== */
-.main-header {
-    background: var(--branco);
-    padding: 15px;
-    text-align: center;
-    border-bottom: 2px solid #ddd;
-}
+/* Grid e Seções */
+.container { max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+.content-section { padding-top: 80px; margin-top: -40px; margin-bottom: 40px; }
+.block-title { font-size: 19px; color: var(--azul); border-left: 6px solid var(--azul); padding-left: 12px; margin-bottom: 20px; text-transform: uppercase; }
+.card-white { background: var(--branco); padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
 
-.logo {
-    height: 50px;
-    max-width: 100%;
-}
+/* Mapa */
+#map { height: 450px; width: 100%; border-radius: 8px; z-index: 1; }
 
-.main-nav {
-    background: var(--azul-principal);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
+/* Cards 16:9 */
+.standard-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.news-card { background: var(--branco); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+.img-box { width: 100%; aspect-ratio: 16/9; overflow: hidden; }
+.img-box img { width: 100%; height: 100%; object-fit: cover; }
+.tag { font-size: 10px; background: var(--azul); color: #fff; padding: 4px 12px; border-radius: 20px; font-weight: bold; }
 
-.nav-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 15px;
-}
+/* Rodapé Formatação Completa */
+.main-footer { background: #1a1a1a; color: #fff; padding: 40px 0 20px; margin-top: 60px; }
+.footer-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 30px; padding: 0 20px; }
+.logo-footer { height: 40px; filter: brightness(0) invert(1); margin-bottom: 15px; }
+.footer-about p { font-size: 14px; color: #aaa; line-height: 1.6; }
+.footer-links h3, .footer-social h3 { font-size: 16px; margin-bottom: 15px; color: var(--azul); }
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 8px; }
+.footer-links a { color: #aaa; text-decoration: none; font-size: 14px; }
+.social-icons { display: flex; gap: 15px; }
+.social-icons a { color: #fff; font-size: 20px; }
+.footer-bottom { text-align: center; border-top: 1px solid #333; margin-top: 30px; padding-top: 20px; font-size: 12px; color: #666; }
 
-.menu-toggle {
-    color: var(--branco);
-    font-size: 24px;
-    cursor: pointer;
-}
+/* Mobile Menu */
+.nav-links { display: none; list-style: none; background: #003366; }
+.nav-links.show { display: block; }
+.nav-links a { color: #fff; text-decoration: none; display: block; padding: 15px 20px; }
 
-.search-container {
-    display: flex;
-    background: var(--branco);
-    border-radius: 4px;
-    padding: 5px 10px;
-    width: 200px;
-}
-
-.search-container input {
-    border: none;
-    outline: none;
-    width: 100%;
-    font-size: 13px;
-}
-
-.search-container button {
-    border: none;
-    background: none;
-    color: var(--azul-principal);
-    cursor: pointer;
-}
-
-/* Menu Mobile/Desktop */
-.nav-links {
-    display: none; /* Escondido por padrão no mobile */
-    list-style: none;
-    background: var(--azul-escuro);
-}
-
-.nav-links.show {
-    display: block;
-}
-
-.nav-links li a {
-    color: var(--branco);
-    text-decoration: none;
-    display: block;
-    padding: 15px 20px;
-    font-weight: bold;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-/* ==========================================================================
-   TICKER (LETREIRO ESTILO TV)
-   ========================================================================== */
-.ticker-tv {
-    background: var(--preto-ticker);
-    color: var(--verde-agro);
-    height: 35px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    font-size: 12px;
-    font-weight: bold;
-    border-top: 1px solid #222;
-}
-
-.ticker-track {
-    display: flex;
-    white-space: nowrap;
-    animation: scroll-tv 30s linear infinite;
-}
-
-.ticker-track span {
-    padding-right: 80px;
-}
-
-@keyframes scroll-tv {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
-
-/* ==========================================================================
-   LAYOUT E CONTAINERS
-   ========================================================================== */
-.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 15px;
-}
-
-.content-section {
-    margin-bottom: 40px;
-    scroll-margin-top: 120px; /* Evita que o título fique embaixo do menu */
-}
-
-.block-title {
-    font-size: 20px;
-    color: var(--azul-principal);
-    margin-bottom: 20px;
-    border-left: 6px solid var(--azul-principal);
-    padding-left: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* GRID PADRONIZADA (3 colunas no desktop, 1 no mobile) */
-.standard-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
-}
-
-/* ==========================================================================
-   CARDS DE NOTÍCIAS (PADRONIZAÇÃO DE IMAGENS)
-   ========================================================================== */
-.news-card {
-    background: var(--branco);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--sombra);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: transform 0.3s;
-}
-
-.news-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Força todas as imagens a terem a mesma proporção (16:9) */
-.img-box {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background: #e0e0e0;
-}
-
-.img-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Recorta a imagem para caber sem distorcer */
-}
-
-.news-body {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.tag {
-    font-size: 10px;
-    background: var(--azul-principal);
-    color: var(--branco);
-    padding: 3px 8px;
-    border-radius: 3px;
-    font-weight: bold;
-    align-self: flex-start;
-    margin-bottom: 12px;
-}
-
-.news-body h4 {
-    font-size: 16px;
-    margin-bottom: 15px;
-    line-height: 1.4;
-    color: #222;
-    flex-grow: 1;
-}
-
-.btn-link {
-    color: var(--azul-principal);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 13px;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
-    display: block;
-}
-
-/* ==========================================================================
-   COTAÇÕES AGRO
-   ========================================================================== */
-.agro-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-
-.agro-card {
-    background: var(--branco);
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    border-bottom: 4px solid var(--verde-agro);
-    box-shadow: var(--sombra);
-}
-
-.agro-card i {
-    color: var(--verde-agro);
-    font-size: 24px;
-    margin-bottom: 8px;
-    display: block;
-}
-
-.agro-card span {
-    font-size: 11px;
-    color: #666;
-    font-weight: bold;
-    display: block;
-}
-
-.agro-card strong {
-    font-size: 14px;
-    color: var(--azul-principal);
-}
-
-/* ==========================================================================
-   CALCULADORA, HORÓSCOPO E CALENDÁRIO
-   ========================================================================== */
-.market-split {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.card-white {
-    background: var(--branco);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: var(--sombra);
-}
-
-.mini-title {
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: var(--azul-principal);
-}
-
-/* Formulários */
-input[type="number"], select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    font-size: 15px;
-    outline: none;
-}
-
-.btn-calc {
-    width: 100%;
-    padding: 14px;
-    background: var(--azul-principal);
-    color: var(--branco);
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-calc:hover {
-    background: var(--azul-escuro);
-}
-
-.res-box {
-    margin-top: 20px;
-    padding: 15px;
-    background: #eef7ff;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
-    color: var(--azul-principal);
-    border: 1px dashed var(--azul-principal);
-}
-
-/* Calendário */
-.calendar-box {
-    text-align: center;
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.cal-header { font-size: 18px; color: var(--azul-principal); font-weight: bold; }
-.cal-date { font-size: 50px; font-weight: 900; line-height: 1; margin: 5px 0; }
-.cal-day { font-size: 14px; color: #e74c3c; font-weight: bold; text-transform: uppercase; }
-
-/* ==========================================================================
-   MAPA (RESOLVENDO O PROBLEMA DE NÃO APARECER)
-   ========================================================================== */
-#map {
-    height: 450px; /* Sem altura definida, o mapa fica invisível */
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: var(--sombra);
-    z-index: 1; /* Garante que fique abaixo do menu */
-}
-
-/* ==========================================================================
-   BOTÃO WHATSAPP
-   ========================================================================== */
-.wa-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #25d366;
-    color: var(--branco);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    text-decoration: none;
-    z-index: 2000;
-}
-
-/* ==========================================================================
-   RESPONSIVIDADE (TABLETS E DESKTOP)
-   ========================================================================== */
 @media (min-width: 768px) {
-    .standard-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .market-split {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .nav-links {
-        display: flex !important;
-        justify-content: center;
-        background: var(--azul-principal);
-    }
-
-    .nav-links li a {
-        border-bottom: none;
-        padding: 18px 25px;
-    }
-
-    .nav-links li a:hover {
-        background: rgba(255,255,255,0.1);
-    }
-
-    .menu-toggle {
-        display: none;
-    }
-    }
-    
+    .standard-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-container { grid-template-columns: 2fr 1fr 1fr; }
+    .nav-links { display: flex; justify-content: center; }
+}
