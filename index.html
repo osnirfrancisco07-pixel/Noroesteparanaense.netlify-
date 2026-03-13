@@ -3,26 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noroeste Paranaense | Notícias Hoje</title>
+    <title>Noroeste Paranaense | Portal de Notícias</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="main-header">
-        <img src="posts/27317.jpg" alt="Logo" class="logo">
+        <img src="posts/27317.jpg" alt="Logo Noroeste Paranaense" class="logo">
     </header>
 
     <nav class="main-nav">
-        <div class="menu-container-mobile" onclick="toggleMenu()">
-            <div class="hamburger">
-                <span></span><span></span><span></span>
+        <div class="nav-container-top">
+            <div class="menu-container-mobile" onclick="toggleMenu()">
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+                <span class="menu-label">MENU</span>
             </div>
-            <span class="menu-label">MENU</span>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Buscar notícias...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
         </div>
         
         <ul class="nav-links" id="nav-links">
             <li><a href="#inicio" onclick="toggleMenu()"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#economia" onclick="toggleMenu()"><i class="fas fa-chart-line"></i> Economia</a></li>
             <li><a href="#novelas" onclick="toggleMenu()"><i class="fas fa-tv"></i> Novelas</a></li>
             <li><a href="#signos" onclick="toggleMenu()"><i class="fas fa-star"></i> Signos</a></li>
             <li><a href="#eventos" onclick="toggleMenu()"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
@@ -32,85 +40,88 @@
 
     <main class="content-wrapper">
         
+        <section id="economia" class="market-panel">
+            <div class="indicator-group">
+                <div class="market-item">
+                    <span class="label">DÓLAR</span>
+                    <span class="value">R$ 4,96 <i class="fas fa-caret-down down"></i></span>
+                </div>
+                <div class="market-item">
+                    <span class="label">IBOVESPA</span>
+                    <span class="value">128.450 <i class="fas fa-caret-up up"></i></span>
+                </div>
+                <div class="market-item">
+                    <span class="label">BITCOIN</span>
+                    <span class="value">R$ 365.200 <i class="fas fa-caret-up up"></i></span>
+                </div>
+            </div>
+
+            <div class="weather-brief">
+                <i class="fas fa-sun"></i>
+                <span>Maringá: 29°C</span>
+            </div>
+        </section>
+
         <section id="inicio">
             <article class="hero-post">
                 <div class="img-container">
-                    <img src="posts/27317.jpg" alt="Destaque">
+                    <img src="posts/27317.jpg" alt="Expoingá 2026">
                 </div>
                 <div class="post-content">
                     <span class="badge">URGENTE</span>
-                    <h2>Expoingá 2026: Venda de ingressos liberada para shows de hoje</h2>
-                    <p>Acompanhe a movimentação no Parque de Exposições e confira os preços dos camarotes e pista para o show desta noite.</p>
+                    <h2>Expoingá 2026: Venda de ingressos liberada e grade de shows confirmada</h2>
+                    <p>Confira a programação completa para hoje (13/03) e garanta seu lugar no maior evento do Noroeste.</p>
                 </div>
             </article>
         </section>
 
-        <section id="novelas" class="info-section">
-            <h3 class="section-title"><i class="fas fa-tv"></i> Resumo das Novelas (13/03)</h3>
-            <div class="card-info">
-                <h4>Mania de Você</h4>
-                <p>Mavi descobre o esconderijo de Luma e prepara uma armadilha. Viola fica dividida entre a carreira e o novo amor.</p>
+        <section id="novelas" class="info-block">
+            <h3 class="title-section"><i class="fas fa-tv"></i> Resumo das Novelas</h3>
+            <div class="card-text">
+                <p><strong>Mania de Você:</strong> Mavi descobre segredo de Luma e planeja vingança. Viola fica dividida.</p>
             </div>
-            <div class="card-info">
-                <h4>Volta por Cima</h4>
-                <p>Madalena confronta Osmar sobre o paradeiro do bilhete premiado de seu pai. Jão recebe uma proposta inesperada na empresa.</p>
+            <div class="card-text">
+                <p><strong>Volta por Cima:</strong> Madalena confronta Osmar sobre o bilhete premiado de seu pai.</p>
             </div>
         </section>
 
-        <section id="signos" class="info-section">
-            <h3 class="section-title"><i class="fas fa-star"></i> Horóscopo do Dia</h3>
-            <div class="card-info">
-                <p><strong>Áries:</strong> Dia de foco total no trabalho. Evite gastos impulsivos. <br>
-                <strong>Touro:</strong> O amor está em alta. Momento ideal para conversas sérias.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Gêmeos:</strong> Sua criatividade ajudará a resolver um problema antigo.<br>
-                <strong>Câncer:</strong> Reserve um tempo para cuidar da saúde e descansar a mente.</p>
+        <section id="signos" class="info-block">
+            <h3 class="title-section"><i class="fas fa-star"></i> Horóscopo de Hoje</h3>
+            <div class="card-text">
+                <p><strong>Áries:</strong> Foco total nas finanças. <strong>Touro:</strong> Dia favorável para o amor e diálogos.</p>
             </div>
         </section>
 
-        <section id="eventos" class="info-section">
-            <h3 class="section-title"><i class="fas fa-calendar-alt"></i> Eventos na Região</h3>
-            <div class="card-info">
-                <p><strong>Maringá:</strong> Feira do Produtor hoje no Estádio Willie Davids, das 17h às 21h.</p>
-            </div>
-            <div class="card-info">
-                <p><strong>Umuarama:</strong> Cinema gratuito na Praça Miguel Rossafa hoje às 19h30.</p>
-            </div>
-        </section>
-
-        <section id="empregos" class="info-section">
-            <h3 class="section-title"><i class="fas fa-briefcase"></i> Vagas de Emprego</h3>
-            <div class="card-info">
-                <p><strong>Agência do Trabalhador:</strong> 45 novas vagas para auxiliar de produção e vendas em Paranavaí e Maringá. Comparecer com currículo.</p>
+        <section id="eventos" class="info-block">
+            <h3 class="title-section"><i class="fas fa-calendar-alt"></i> Eventos na Região</h3>
+            <div class="card-text">
+                <p><strong>Maringá:</strong> Feira do Produtor no Estádio Willie Davids, das 17h às 21h.</p>
             </div>
         </section>
 
     </main>
 
+    <a href="https://wa.me/5544988329395" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <footer class="main-footer">
         <div class="footer-container">
             <h3>Siga Nossas Redes</h3>
             <div class="social-highlight">
-                <a href="https://wa.me/5544988329395" class="social-btn whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-                <a href="#" class="social-btn facebook">
-                    <i class="fab fa-facebook-f"></i> Facebook
-                </a>
-                <a href="#" class="social-btn instagram">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
+                <a href="https://wa.me/5544988329395" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
             </div>
-            <p class="copyright">&copy; 2026 Noroeste Paranaense | Atualizado Hoje</p>
+            <p class="copyright">&copy; 2026 Noroeste Paranaense</p>
         </div>
     </footer>
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('nav-links');
-            menu.classList.toggle('show');
+            document.getElementById('nav-links').classList.toggle('show');
         }
     </script>
 </body>
 </html>
+
