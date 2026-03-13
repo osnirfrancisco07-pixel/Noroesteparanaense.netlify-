@@ -3,71 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noroeste Paranaense | Portal de Notícias</title>
+    <title>Noroeste Paranaense | Notícias de Hoje</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="main-header">
-        <img src="posts/27317.jpg" alt="Logo" class="logo">
+        <div class="header-container">
+            <img src="posts/27317.jpg" alt="Logo Noroeste Paranaense" class="logo">
+        </div>
     </header>
 
     <nav class="main-nav">
-        <div class="menu-container-mobile" onclick="toggleMenu()">
+        <div class="menu-mobile-trigger" onclick="toggleMenu()">
             <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
             <span class="menu-label">MENU</span>
         </div>
         
         <ul class="nav-links" id="nav-links">
             <li><a href="#"><i class="fas fa-home"></i> Início</a></li>
-            <li><a href="#"><i class="fas fa-newspaper"></i> Notícias</a></li>
-            <li><a href="#"><i class="fas fa-briefcase"></i> Empregos</a></li>
-            <li><a href="#"><i class="fas fa-bullhorn"></i> Utilidade</a></li>
-            <li><a href="#"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+            <li><a href="#noticias"><i class="fas fa-map-marker-alt"></i> Região</a></li>
+            <li><a href="#novelas"><i class="fas fa-tv"></i> Novelas</a></li>
+            <li><a href="#signos"><i class="fas fa-star"></i> Signos</a></li>
+            <li><a href="#eventos"><i class="fas fa-calendar-check"></i> Eventos</a></li>
         </ul>
     </nav>
 
     <main class="content-wrapper">
-        <section class="main-grid">
-            <article class="hero-post">
-                <div class="img-container">
-                    <img src="posts/27317.jpg" alt="Destaque">
+        
+        <section class="main-layout" id="noticias">
+            <div class="primary-col">
+                <h2 class="section-title">Destaques do Noroeste</h2>
+                <article class="main-post">
+                    <div class="img-wrapper">
+                        <img src="posts/27317.jpg" alt="Notícia Principal">
+                    </div>
+                    <div class="post-data">
+                        <span class="cat-tag">URGENTE</span>
+                        <h1>Expoingá 2026 anuncia grade completa de shows</h1>
+                        <p>A organização confirmou os nomes que subirão ao palco este ano. Venda de ingressos começa na próxima segunda-feira.</p>
+                    </div>
+                </article>
+
+                <h2 class="section-title" id="novelas" style="margin-top: 40px;">Resumo das Novelas</h2>
+                <div class="novela-card">
+                    <h3>Mania de Você (Globo)</h3>
+                    <p><strong>Hoje:</strong> Mavi planeja novo golpe contra Viola enquanto Luma tenta recuperar as provas roubadas.</p>
                 </div>
-                <div class="post-content">
-                    <span class="badge">DESTAQUE</span>
-                    <h2>As principais notícias do Noroeste do Paraná em um só lugar</h2>
-                    <p>Fique por dentro de tudo o que acontece na nossa região com credibilidade e rapidez.</p>
+                <div class="novela-card">
+                    <h3>Volta por Cima</h3>
+                    <p><strong>Hoje:</strong> Madalena confronta Osmar sobre o paradeiro do bilhete premiado de seu pai.</p>
                 </div>
-            </article>
+            </div>
+
+            <aside class="secondary-col">
+                <h3 class="side-title" id="signos">Horóscopo do Dia</h3>
+                <div class="horoscopo-item">
+                    <p><strong>Áries:</strong> Dia de foco total no trabalho. Evite gastos impulsivos.</p>
+                </div>
+                <div class="horoscopo-item">
+                    <p><strong>Touro:</strong> O amor está em alta. Momento ideal para conversas sérias.</p>
+                </div>
+                <div class="horoscopo-item">
+                    <p><strong>Gêmeos:</strong> Sua criatividade ajudará a resolver um problema antigo.</p>
+                </div>
+
+                <h3 class="side-title" id="eventos" style="margin-top: 30px;">Eventos na Região</h3>
+                <div class="side-item">
+                    <div class="side-dot"></div>
+                    <p><strong>Hoje:</strong> Feira do Produtor em Maringá - Estádio Willie Davids.</p>
+                </div>
+                <div class="side-item">
+                    <div class="side-dot"></div>
+                    <p><strong>Amanhã:</strong> Show Gospel em Umuarama - Praça da Bíblia, 20h.</p>
+                </div>
+            </aside>
         </section>
     </main>
 
     <footer class="main-footer">
-        <div class="footer-container">
-            <h3>Siga Nossas Redes</h3>
-            <div class="social-highlight">
-                <a href="https://wa.me/5544988329395" class="social-btn whatsapp">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-                <a href="#" class="social-btn facebook">
-                    <i class="fab fa-facebook-f"></i> Facebook
-                </a>
-                <a href="#" class="social-btn instagram">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
+        <div class="footer-inner">
+            <h3>Siga o Noroeste Paranaense</h3>
+            <div class="social-links-area">
+                <a href="https://wa.me/5544988329395" class="social-card wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="social-card fb"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="#" class="social-card ig"><i class="fab fa-instagram"></i> Instagram</a>
             </div>
-            <p class="copyright">&copy; 2026 Noroeste Paranaense</p>
+            <p class="copyright">&copy; 2026 Noroeste Paranaense | 13 de Março de 2026</p>
         </div>
     </footer>
 
     <script>
         function toggleMenu() {
-            document.getElementById('nav-links').classList.toggle('show');
+            var menu = document.getElementById("nav-links");
+            menu.classList.toggle("active");
         }
     </script>
 </body>
