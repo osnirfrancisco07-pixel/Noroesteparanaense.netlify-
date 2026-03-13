@@ -41,10 +41,11 @@
 
         <div class="noticias-grid">
             <article class="noticia-destaque">
-                <img src="posts/27317.jpg" alt="Notícia Principal"> <div class="destaque-info">
-                    <span class="categoria">Região</span>
+                <img src="posts/27317.jpg" alt="Foto da Notícia">
+                <div class="destaque-info">
+                    <span class="categoria">REGIÃO</span>
                     <h1>Título da Notícia Principal em Destaque</h1>
-                    <p>Resumo da notícia importante do Noroeste Paranaense.</p>
+                    <p>Resumo da notícia importante do Noroeste Paranaense para manter o leitor bem informado.</p>
                 </div>
             </article>
 
@@ -70,11 +71,11 @@
 
     <script>
         function toggleMenu() {
-            const navLinks = document.getElementById('nav-links');
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
+            var links = document.getElementById("nav-links");
+            if (links.style.display === "flex") {
+                links.style.display = "none";
             } else {
-                navLinks.classList.add('active');
+                links.style.display = "flex";
             }
         }
     </script>
