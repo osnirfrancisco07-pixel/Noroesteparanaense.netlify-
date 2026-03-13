@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noroeste Paranaense | Portal de Notícias</title>
+    <title>Noroeste Paranaense | Oficial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
@@ -24,82 +24,97 @@
         </div>
         
         <div class="ticker-tv">
-            <div class="ticker-track" id="ticker-values"></div>
+            <div class="ticker-track" id="ticker-values">
+                </div>
         </div>
 
         <ul class="nav-links" id="nav-links">
-            <li><a href="#noticias">NOTÍCIAS</a></li>
-            <li><a href="#agro">AGRO</a></li>
-            <li><a href="#economia">CÂMBIO</a></li>
-            <li><a href="#entretenimento">NOVELAS</a></li>
-            <li><a href="#mapa-clima">CLIMA</a></li>
+            <li><a href="#noticias" onclick="toggleMenu()">NOTÍCIAS</a></li>
+            <li><a href="#agro" onclick="toggleMenu()">AGRO</a></li>
+            <li><a href="#economia" onclick="toggleMenu()">CÂMBIO</a></li>
+            <li><a href="#entretenimento" onclick="toggleMenu()">NOVELAS/HORÓSCOPO</a></li>
+            <li><a href="#mapa-clima" onclick="toggleMenu()">CLIMA</a></li>
         </ul>
     </nav>
 
     <main class="container">
         
-        <section id="agro" class="content-section">
-            <h2 class="block-title">Cotações do Campo</h2>
-            <div class="agro-grid">
-                <div class="agro-card">
-                    <i class="fas fa-seedling"></i>
-                    <span>SOJA (Saca)</span>
-                    <strong>R$ 134,50</strong>
+        <section class="content-section">
+            <div class="market-split">
+                <div class="card-white">
+                    <h3 class="mini-title"><i class="fas fa-calendar-day"></i> Hoje</h3>
+                    <div id="calendar-display" class="calendar-box"></div>
                 </div>
-                <div class="agro-card">
-                    <i class="fas fa-wheat-awn"></i>
-                    <span>MILHO (Saca)</span>
-                    <strong>R$ 62,20</strong>
-                </div>
-                <div class="agro-card">
-                    <i class="fas fa-cow"></i>
-                    <span>BOI GORDO (@)</span>
-                    <strong>R$ 232,00</strong>
+                <div class="card-white">
+                    <h3 class="mini-title"><i class="fas fa-star"></i> Horóscopo</h3>
+                    <select id="signoSelect" onchange="atualizarHoroscopo()">
+                        <option value="Áries">Áries</option>
+                        <option value="Touro">Touro</option>
+                        <option value="Gêmeos">Gêmeos</option>
+                        <option value="Câncer">Câncer</option>
+                        <option value="Leão">Leão</option>
+                        <option value="Virgem">Virgem</option>
+                        <option value="Libra">Libra</option>
+                        <option value="Escorpião">Escorpião</option>
+                        <option value="Sagitário">Sagitário</option>
+                        <option value="Capricórnio">Capricórnio</option>
+                        <option value="Aquário">Aquário</option>
+                        <option value="Peixes">Peixes</option>
+                    </select>
+                    <p id="horoscopo-texto" class="res-box">Escolha seu signo...</p>
                 </div>
             </div>
         </section>
 
+        <section id="agro" class="content-section">
+            <h2 class="block-title">Cotações do Campo</h2>
+            <div class="agro-grid">
+                <div class="agro-card"><i class="fas fa-seedling"></i><span>SOJA</span><strong>R$ 134,50</strong></div>
+                <div class="agro-card"><i class="fas fa-wheat-awn"></i><span>MILHO</span><strong>R$ 62,20</strong></div>
+                <div class="agro-card"><i class="fas fa-cow"></i><span>BOI GORDO</span><strong>R$ 232,00</strong></div>
+            </div>
+        </section>
+
         <section id="noticias" class="content-section">
-            <h2 class="block-title">Destaques do Dia</h2>
+            <h2 class="block-title">Notícias e Esportes</h2>
             <div id="news-grid" class="standard-grid"></div>
         </section>
 
         <section id="economia" class="content-section">
-            <h2 class="block-title">Calculadora de Câmbio</h2>
+            <h2 class="block-title">Câmbio</h2>
             <div class="market-split">
                 <div class="card-white currency-display">
-                    <div>USD: <strong id="usd-val">R$ 4,96</strong></div>
-                    <div>EUR: <strong id="eur-val">R$ 5,38</strong></div>
+                    <div>USD: <strong>R$ 4,96</strong></div>
+                    <div>EUR: <strong>R$ 5,38</strong></div>
                 </div>
                 <div class="card-white">
-                    <div class="calc-group">
-                        <input type="number" id="inputValue" placeholder="Valor em R$" oninput="convertCurrency()">
-                        <select id="currencySelect" onchange="convertCurrency()">
-                            <option value="USD">Dólar (USD)</option>
-                            <option value="EUR">Euro (EUR)</option>
-                        </select>
-                    </div>
+                    <input type="number" id="inputValue" placeholder="Valor R$">
+                    <select id="currencySelect">
+                        <option value="USD">Dólar (USD)</option>
+                        <option value="EUR">Euro (EUR)</option>
+                    </select>
+                    <button class="btn-calc" onclick="convertCurrency()">CONVERTER</button>
                     <div id="resultValue" class="res-box">Resultado: $ 0,00</div>
                 </div>
             </div>
         </section>
 
         <section id="entretenimento" class="content-section">
-            <h2 class="block-title">Entretenimento</h2>
+            <h2 class="block-title">Lazer e Eventos</h2>
             <div class="standard-grid">
                 <div class="news-card">
                     <div class="img-box"><img src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=500"></div>
                     <div class="news-body">
-                        <span class="tag">RESUMO</span>
-                        <h4>Novelas: Veja o que acontece nos próximos capítulos</h4>
-                        <a href="#" class="btn-link">Ler resumos</a>
+                        <span class="tag">NOVELAS</span>
+                        <h4>Resumos da Semana</h4>
+                        <a href="#" class="btn-link">Ver capítulos</a>
                     </div>
                 </div>
                 <div class="news-card">
                     <div class="img-box"><img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=500"></div>
                     <div class="news-body">
-                        <span class="tag" style="background:#e67e22">AGENDA</span>
-                        <h4>Eventos: Programação cultural para o Noroeste</h4>
+                        <span class="tag" style="background:#e67e22">EVENTOS</span>
+                        <h4>Agenda Cultural</h4>
                         <a href="#" class="btn-link">Ver locais</a>
                     </div>
                 </div>
@@ -107,13 +122,11 @@
         </section>
 
         <section id="mapa-clima" class="content-section">
-            <h2 class="block-title">Previsão e Satélite</h2>
+            <h2 class="block-title">Clima e Satélite</h2>
             <div id="map"></div>
         </section>
 
     </main>
-
-    <a href="https://wa.me/5544988329395" class="wa-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
