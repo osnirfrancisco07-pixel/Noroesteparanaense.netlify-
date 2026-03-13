@@ -3,80 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noroeste do Paraná em Foco</title>
+    <title>Noroeste Paranaense | Portal de Notícias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <img src="posts/27317.jpg" alt="Logo Noroeste Paranaense" class="logo-site">
+    <header class="main-header">
+        <img src="posts/27317.jpg" alt="Logo" class="logo">
     </header>
 
-    <nav>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <div class="bars-container">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+    <nav class="main-nav">
+        <div class="menu-container-mobile" onclick="toggleMenu()">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <span class="txt-menu">MENU</span>
+            <span class="menu-label">MENU</span>
         </div>
         
-        <div class="nav-links" id="nav-links">
-            <a href="#">Notícias</a>
-            <a href="#">Eventos</a>
-            <a href="#">Vagas de Emprego</a>
-            <a href="#">Utilidade Pública</a>
-            <a href="#">Serviços</a>
-            <a href="#">Humor</a>
-            <a href="#">Horóscopo</a>
-            <a href="#">Novelas</a>
-        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#"><i class="fas fa-newspaper"></i> Notícias</a></li>
+            <li><a href="#"><i class="fas fa-briefcase"></i> Empregos</a></li>
+            <li><a href="#"><i class="fas fa-bullhorn"></i> Utilidade</a></li>
+            <li><a href="#"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+        </ul>
     </nav>
 
-    <main class="container">
-        <section class="publicidade-topo">
-            <div class="banner-ads">Publicidade - Anuncie Aqui</div>
-        </section>
-
-        <div class="noticias-grid">
-            <article class="noticia-destaque">
-                <img src="posts/27317.jpg" alt="Foto da Notícia">
-                <div class="destaque-info">
-                    <span class="categoria">REGIÃO</span>
-                    <h1>Título da Notícia Principal em Destaque</h1>
-                    <p>Resumo da notícia importante do Noroeste Paranaense para manter o leitor bem informado.</p>
+    <main class="content-wrapper">
+        <section class="main-grid">
+            <article class="hero-post">
+                <div class="img-container">
+                    <img src="posts/27317.jpg" alt="Destaque">
+                </div>
+                <div class="post-content">
+                    <span class="badge">DESTAQUE</span>
+                    <h2>As principais notícias do Noroeste do Paraná em um só lugar</h2>
+                    <p>Fique por dentro de tudo o que acontece na nossa região com credibilidade e rapidez.</p>
                 </div>
             </article>
-
-            <aside class="noticias-laterais">
-                <article class="mini-card">
-                    <img src="posts/27317.jpg" alt="Miniatura">
-                    <h3>Vagas de emprego abertas para Maringá e região</h3>
-                </article>
-                <article class="mini-card">
-                    <img src="posts/27317.jpg" alt="Miniatura">
-                    <h3>Previsão do tempo: Calor segue forte no Noroeste</h3>
-                </article>
-            </aside>
-        </div>
+        </section>
     </main>
 
-    <footer>
-        <div class="redes">
-            <a href="https://wa.me/5544988329395" target="_blank">WhatsApp</a>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <h3>Siga Nossas Redes</h3>
+            <div class="social-highlight">
+                <a href="https://wa.me/5544988329395" class="social-btn whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="#" class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="#" class="social-btn instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+            <p class="copyright">&copy; 2026 Noroeste Paranaense em Foco</p>
         </div>
-        <p>&copy; 2026 Noroeste Paranaense</p>
     </footer>
 
     <script>
         function toggleMenu() {
-            var links = document.getElementById("nav-links");
-            if (links.style.display === "flex") {
-                links.style.display = "none";
-            } else {
-                links.style.display = "flex";
-            }
+            document.getElementById('nav-links').classList.toggle('show');
         }
     </script>
 </body>
