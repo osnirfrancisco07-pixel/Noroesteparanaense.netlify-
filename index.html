@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noroeste Paranaense | Oficial</title>
+    <title>Noroeste Paranaense | Portal de Notícias</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
@@ -11,7 +11,7 @@
 <body>
 
     <header class="main-header">
-        <img src="posts/27317.jpg" alt="Logo" class="logo">
+        <img src="posts/27317.jpg" alt="Logo Noroeste Paranaense" class="logo">
     </header>
 
     <nav class="main-nav">
@@ -24,29 +24,47 @@
         </div>
         
         <div class="ticker-tv">
-            <div class="ticker-track" id="ticker-values">
-                </div>
+            <div class="ticker-track" id="ticker-values"></div>
         </div>
 
         <ul class="nav-links" id="nav-links">
             <li><a href="#noticias" onclick="toggleMenu()">NOTÍCIAS</a></li>
             <li><a href="#agro" onclick="toggleMenu()">AGRO</a></li>
-            <li><a href="#economia" onclick="toggleMenu()">CÂMBIO</a></li>
-            <li><a href="#entretenimento" onclick="toggleMenu()">NOVELAS/HORÓSCOPO</a></li>
-            <li><a href="#mapa-clima" onclick="toggleMenu()">CLIMA</a></li>
+            <li><a href="#novelas" onclick="toggleMenu()">NOVELAS</a></li>
+            <li><a href="#horoscopo" onclick="toggleMenu()">HORÓSCOPO</a></li>
+            <li><a href="#clima" onclick="toggleMenu()">CLIMA</a></li>
         </ul>
     </nav>
 
     <main class="container">
         
-        <section class="content-section">
+        <section id="agro" class="content-section">
+            <h2 class="block-title">Cotações do Campo</h2>
+            <div class="agro-grid">
+                <div class="agro-card"><i class="fas fa-seedling"></i><span>SOJA</span><strong>R$ 134,50</strong></div>
+                <div class="agro-card"><i class="fas fa-wheat-awn"></i><span>MILHO</span><strong>R$ 62,20</strong></div>
+                <div class="agro-card"><i class="fas fa-cow"></i><span>BOI GORDO</span><strong>R$ 232,00</strong></div>
+            </div>
+        </section>
+
+        <section id="novelas" class="content-section">
+            <h2 class="block-title">Resumo das Novelas</h2>
+            <div class="standard-grid">
+                <div class="news-card">
+                    <div class="img-box"><img src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=500"></div>
+                    <div class="news-body">
+                        <span class="tag">RESUMO</span>
+                        <h4>Globo: Veja o que acontece nos capítulos da semana</h4>
+                        <a href="#" class="btn-link">Ver capítulos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="horoscopo" class="content-section">
             <div class="market-split">
                 <div class="card-white">
-                    <h3 class="mini-title"><i class="fas fa-calendar-day"></i> Hoje</h3>
-                    <div id="calendar-display" class="calendar-box"></div>
-                </div>
-                <div class="card-white">
-                    <h3 class="mini-title"><i class="fas fa-star"></i> Horóscopo</h3>
+                    <h2 class="mini-title">Horóscopo do Dia</h2>
                     <select id="signoSelect" onchange="atualizarHoroscopo()">
                         <option value="Áries">Áries</option>
                         <option value="Touro">Touro</option>
@@ -61,75 +79,59 @@
                         <option value="Aquário">Aquário</option>
                         <option value="Peixes">Peixes</option>
                     </select>
-                    <p id="horoscopo-texto" class="res-box">Escolha seu signo...</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="agro" class="content-section">
-            <h2 class="block-title">Cotações do Campo</h2>
-            <div class="agro-grid">
-                <div class="agro-card"><i class="fas fa-seedling"></i><span>SOJA</span><strong>R$ 134,50</strong></div>
-                <div class="agro-card"><i class="fas fa-wheat-awn"></i><span>MILHO</span><strong>R$ 62,20</strong></div>
-                <div class="agro-card"><i class="fas fa-cow"></i><span>BOI GORDO</span><strong>R$ 232,00</strong></div>
-            </div>
-        </section>
-
-        <section id="noticias" class="content-section">
-            <h2 class="block-title">Notícias e Esportes</h2>
-            <div id="news-grid" class="standard-grid"></div>
-        </section>
-
-        <section id="economia" class="content-section">
-            <h2 class="block-title">Câmbio</h2>
-            <div class="market-split">
-                <div class="card-white currency-display">
-                    <div>USD: <strong>R$ 4,96</strong></div>
-                    <div>EUR: <strong>R$ 5,38</strong></div>
+                    <div id="horoscopo-texto" class="res-box">Sua previsão aparecerá aqui.</div>
                 </div>
                 <div class="card-white">
-                    <input type="number" id="inputValue" placeholder="Valor R$">
-                    <select id="currencySelect">
-                        <option value="USD">Dólar (USD)</option>
-                        <option value="EUR">Euro (EUR)</option>
-                    </select>
-                    <button class="btn-calc" onclick="convertCurrency()">CONVERTER</button>
-                    <div id="resultValue" class="res-box">Resultado: $ 0,00</div>
+                    <h2 class="mini-title">Data e Hora</h2>
+                    <div id="calendar-display" class="calendar-box"></div>
                 </div>
             </div>
         </section>
 
-        <section id="entretenimento" class="content-section">
-            <h2 class="block-title">Lazer e Eventos</h2>
-            <div class="standard-grid">
-                <div class="news-card">
-                    <div class="img-box"><img src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=500"></div>
-                    <div class="news-body">
-                        <span class="tag">NOVELAS</span>
-                        <h4>Resumos da Semana</h4>
-                        <a href="#" class="btn-link">Ver capítulos</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="img-box"><img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=500"></div>
-                    <div class="news-body">
-                        <span class="tag" style="background:#e67e22">EVENTOS</span>
-                        <h4>Agenda Cultural</h4>
-                        <a href="#" class="btn-link">Ver locais</a>
-                    </div>
-                </div>
+        <section id="clima" class="content-section">
+            <h2 class="block-title">Clima em Tempo Real</h2>
+            <div class="card-white">
+                <p style="margin-bottom:10px; font-size:13px;">Clique no mapa para ver o clima de outra cidade:</p>
+                <div id="map"></div>
             </div>
-        </section>
-
-        <section id="mapa-clima" class="content-section">
-            <h2 class="block-title">Clima e Satélite</h2>
-            <div id="map"></div>
         </section>
 
     </main>
 
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <img src="posts/27317.jpg" alt="Logo Rodapé" class="logo-footer">
+                <p>O seu portal de notícias da região Noroeste do Paraná. Informação com credibilidade e agilidade.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Navegação</h3>
+                <ul>
+                    <li><a href="#noticias">Notícias</a></li>
+                    <li><a href="#agro">Agronegócio</a></li>
+                    <li><a href="#clima">Previsão do Tempo</a></li>
+                    <li><a href="#anuncie">Anuncie Conosco</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Siga-nos</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://wa.me/5544988329395"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Noroeste Paranaense - Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5544988329395" class="wa-btn"><i class="fab fa-whatsapp"></i></a>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
-
+    </html>
+                                                             
