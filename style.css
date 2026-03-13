@@ -1,99 +1,122 @@
+/* 1. Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f0f5ff;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
 }
 
-/* CABEÇALHO E LOGO */
+/* 2. Cabeçalho (Onde está a logo) */
 header {
-    background: #004aad;
-    color: white;
+    background-color: #ffffff;
+    padding: 20px 0;
     text-align: center;
-    padding: 20px;
+    border-bottom: 5px solid #004a8d; /* Faixa azul abaixo da logo */
 }
 
-.logo {
-    max-width: 180px; /* Tamanho da logo */
+.logo-site {
+    max-width: 180px; /* Tamanho ideal para o topo */
     height: auto;
-    margin-bottom: 10px;
+    display: block;
+    margin: 0 auto;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 28px;
-}
-
-/* MENU */
+/* 3. Menu de Navegação */
 nav {
-    background: white;
+    background-color: #004a8d;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Faz os itens quebrarem a linha no celular */
     justify-content: center;
-    border-bottom: 3px solid #004aad;
+    padding: 5px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav a {
-    padding: 15px;
+    color: white;
     text-decoration: none;
-    color: #004aad;
+    padding: 12px 18px;
+    font-size: 13px;
     font-weight: bold;
+    text-transform: uppercase;
+    transition: background 0.3s;
 }
 
 nav a:hover {
-    background: #e6edff;
+    background-color: #003366;
 }
 
-/* PUBLICIDADE */
+/* 4. Área de Publicidade */
 .publicidade {
-    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 15px;
     text-align: center;
+}
+
+.publicidade h2 {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 5px;
 }
 
 .banner {
-    background: #dfe8ff;
-    padding: 40px;
+    background-color: #e2e8f0;
+    border: 2px dashed #cbd5e0;
+    padding: 30px;
     border-radius: 8px;
+    color: #4a5568;
+    font-size: 14px;
 }
 
-/* POSTS */
+/* 5. Seção de Posts (Notícias) */
 #posts {
     max-width: 1000px;
-    margin: auto;
-    padding: 20px;
+    margin: 20px auto;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
-.post {
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* RODAPÉ */
+/* 6. Rodapé */
 footer {
-    background: #004aad;
+    background-color: #1a202c;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
     margin-top: 40px;
 }
 
+.redes {
+    margin: 15px 0;
+}
+
 .redes a {
-    color: white;
+    color: #00a8ff;
     text-decoration: none;
     margin: 0 10px;
     font-weight: bold;
 }
 
-/* RESPONSIVIDADE */
-@media (max-width:600px) {
-    header h1 { font-size: 22px; }
-    nav { flex-direction: column; align-items: center; }
-    nav a { width: 100%; border-bottom: 1px solid #ddd; text-align: center; }
-    .logo { max-width: 140px; }
+footer p {
+    font-size: 14px;
+    opacity: 0.8;
 }
 
-@media (max-width:900px) {
-    #posts { padding: 15px; }
+/* Ajuste para Celulares Pequenos */
+@media (max-width: 600px) {
+    nav a {
+        flex: 1 1 45%; /* Coloca dois itens por linha no menu */
+        text-align: center;
+        border: 0.5px solid rgba(255,255,255,0.1);
+    }
 }
