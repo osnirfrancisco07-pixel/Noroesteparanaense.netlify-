@@ -16,10 +16,12 @@ body { background: var(--fundo); color: #333; }
 .nav-links li a { color: #fff; text-decoration: none; padding: 15px; display: block; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
 /* Letreiro */
-.ticker-tv { background: #000; height: 35px; display: flex; align-items: center; overflow: hidden; }
-.ticker-track { display: flex; white-space: nowrap; animation: scroll-ticker 30s linear infinite; }
-.ticker-label { color: #fff; font-size: 11px; background: var(--azul); padding: 2px 5px; margin: 0 10px; border-radius: 3px; }
-.ticker-value { color: #2ecc71; font-weight: bold; }
+.ticker-tv { background: linear-gradient(90deg, #02111f 0%, #05294a 100%); height: 42px; display: flex; align-items: center; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.12); border-bottom: 1px solid rgba(255,255,255,0.12); }
+.ticker-track { display: flex; align-items: center; white-space: nowrap; animation: scroll-ticker 34s linear infinite; }
+.ticker-group { color: #9fd2ff; font-size: 10px; letter-spacing: 0.12em; font-weight: 700; margin: 0 10px 0 20px; }
+.ticker-brand { background: #ffffff; color: #003f75; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 800; margin: 0 18px; letter-spacing: 0.05em; }
+.ticker-label { color: #fff; font-size: 11px; background: #0a4d87; padding: 3px 7px; margin: 0 8px 0 12px; border-radius: 4px; }
+.ticker-value { color: #42f59b; font-weight: 700; }
 @keyframes scroll-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* Layout Geral */
